@@ -1,0 +1,24 @@
+
+name: Diagnostico Cuatro
+
+on:
+  workflow_dispatch:
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Instalar yt-dlp
+        run: |
+          python -m pip install --upgrade yt-dlp
+
+      - name: Comprobar Cuatro
+        run: |
+          yt-dlp \
+            --ignore-config \
+            --no-cache-dir \
+            --simulate \
+            --list-formats \
+            --verbose \
+            "https://www.mediasetinfinity.es/directo/cuatro/"
